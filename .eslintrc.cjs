@@ -30,5 +30,10 @@ module.exports = {
     ],
     'vue/no-setup-props-destructure': ['off'],
     'no-undef': 'error'
+  }, //因为element-plus自动导入了，防止没import报错
+  globals: {
+    ElMessage: 'readonly',
+    ElMessageBox: 'readonly',
+    ElLoading: 'readonly'
   }
 }

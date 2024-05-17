@@ -1,6 +1,7 @@
-import axios from 'axois'
+//响应拦截
+import axios from 'axios'
 import { useUserStore } from '@/stores/repo'
-import ElMessage from 'element-plus'
+import { ElMessage } from 'element-plus'
 import router from '@/router'
 const baseURL = 'http://big-event-vue-api-t.itheima.net'
 //const axios = require('axios');
@@ -22,6 +23,7 @@ instance.interceptors.request.use(
   },
   (err) => Promise.reject(err)
 )
+//响应拦截器
 instance.interceptors.response.use(
   (res) => {
     //Todo 3 ，处理业务失败

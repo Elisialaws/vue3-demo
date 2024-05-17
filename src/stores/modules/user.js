@@ -1,3 +1,4 @@
+import { useGetinfoService } from '@/api/user'
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 export const useUserStore = defineStore(
@@ -11,10 +12,21 @@ export const useUserStore = defineStore(
     const removeToken = () => {
       token.value = ''
     }
+    const user = ref({})
+    const getUser = async () => {
+      const res = await useGetinfoService() //这里res.data.data访问的data是由提供的接口定义的，不是自己起的名字
+      user.value = res.data.data
+    }
+    const setUser = (object) => {
+      user.value = object
+    }
     return {
       token,
       setToken,
-      removeToken
+      removeToken,
+      user,
+      getUser,
+      setUser
     }
   },
   {

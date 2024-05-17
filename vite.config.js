@@ -28,4 +28,8 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
   }
+  /*define: {
+    // 设置为true以在生产模式下启用Vue Devtools
+    __VUE_PROD_DEVTOOLS__: true
+  }*/
 })
