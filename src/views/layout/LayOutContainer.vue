@@ -84,7 +84,9 @@ const handleCommand = async (key) => {
     <el-container>
       <el-header>
         <div>
-          Vue3-Demo<strong> {{ userStore.user.nickname || userStore.user.username }}</strong>
+          Vue3-Demo<strong>
+            {{ userStore.user.nickname || userStore.user.username }}</strong
+          >
         </div>
         <!--@command可以监听菜单上的选择,
           每个菜单选项上的菜单标识会在点击时放到接收的形参里面，决心处理-->
@@ -98,8 +100,12 @@ const handleCommand = async (key) => {
             <el-dropdown-menu>
               <el-dropdown-item command="profile" :icon="User">基本资料</el-dropdown-item>
               <el-dropdown-item command="avatar" :icon="Crop">更换头像</el-dropdown-item>
-              <el-dropdown-item command="password" :icon="EditPen">重置密码</el-dropdown-item>
-              <el-dropdown-item command="logout" :icon="SwitchButton">退出登录</el-dropdown-item>
+              <el-dropdown-item command="password" :icon="EditPen"
+                >重置密码</el-dropdown-item
+              >
+              <el-dropdown-item command="logout" :icon="SwitchButton"
+                >退出登录</el-dropdown-item
+              >
             </el-dropdown-menu>
           </template>
         </el-dropdown>
@@ -109,7 +115,8 @@ const handleCommand = async (key) => {
         <router-view></router-view>
       </el-main>
       <el-footer
-        >Demo ©2024Created by {{ userStore.user.nickname || userStore.user.username }}</el-footer
+        >Demo ©2024Created by
+        {{ userStore.user.nickname || userStore.user.username }}</el-footer
       >
     </el-container>
   </el-container>
