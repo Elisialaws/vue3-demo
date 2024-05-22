@@ -2,9 +2,10 @@
 import { Delete, Edit } from '@element-plus/icons-vue'
 import { ref, onMounted } from 'vue'
 import ChannelSelect from './components/ChannelSelect.vue'
-import { artGetListServer } from '@/api/article'
+import { artGetListService, artDelService } from '@/api/article'
 import { formatTime } from '@/utils/format.js'
 import ArticleEdit from './components/ArticleEdit.vue'
+import { ElMessage } from 'element-plus'
 // 假数据
 const articleList = ref([])
 const total = ref(0) //默认总共数据条数为0
@@ -19,7 +20,7 @@ const params = ref({
 //
 const getArticleList = async () => {
   loading.value = true
-  const res = await artGetListServer(params.value)
+  const res = await artGetListService(params.value)
   articleList.value = res.data.data //res.data是后台返回的结果
   total.value = res.data.total
   loading.value = false
@@ -35,8 +36,15 @@ const onAddArticle = () => {
 const onEditArticle = (row) => {
   articleEditRef.value.open({ row })
 }
-const onDelArticle = (row) => {
-  articleEditRef.value.open({ row })
+const onDelArticle = async (row) => {
+  await ElMessageBox.confirm('你确认删除该文章信息吗？', '温馨提示', {
+    type: 'warning',
+    confirmButtonText: '确认',
+    cancelButtonText: '取消'
+  })
+  await artDelService(row.id)
+  ElMessage.success('删除成功')
+  getArticleList()
 } //处理分页逻辑,每页数量变化后重新渲染
 const onSizeChange = (size) => {
   params.value.pagenum = 1

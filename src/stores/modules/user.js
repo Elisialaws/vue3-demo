@@ -32,7 +32,7 @@ export const useUserStore = defineStore(
   {
     persist: {
       key: 'token', //存储的唯一标识，名字
-      paths: ['token'] //存储哪些数据
+      paths: ['token', 'user'] //存储哪些数据
     }
   }
 )
