@@ -34,3 +34,4 @@ pnpm build
 pnpm lint
 ```
 ### 使用了axios拦截请求，使用Pinia持久化，使用了element-plus组件，使用scss控制样式，eslint和prettier做代码校验
+#### 跟着黑马项目手敲的，学习记录
